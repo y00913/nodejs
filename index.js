@@ -16,7 +16,7 @@ mongoose.connect('mongodb+srv://y00913:y970y913@boilerplate.hyzzm.mongodb.net/bo
 }).then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err))
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.send('Hi. Hello World!'))
 
 app.post('/register', (req, res) => {
     // 회원 가입 필요 정보들을 db에 널어줌
