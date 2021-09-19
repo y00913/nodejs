@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://y00913:y970y913@boilerplate.hyzzm.mongodb.net/boilerplate?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://y00913:passwd@boilerplate.hyzzm.mongodb.net/boilerplate?retryWrites=true&w=majority', {
     useNewUrlParser : true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err))
