@@ -1,21 +1,17 @@
 {
-  "name": "boiler-plate",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "tmpnodejs",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node index.js",
-    "backend": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "ayt",
-  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.11.15"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.12"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^6.0.8",
+    "morgan": "~1.9.1"
   }
 }
