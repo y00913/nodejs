@@ -40,11 +40,11 @@ app.use(function(err, req, res, next) {
 
 
 // connect mongodb
+const db = require('./config/keys');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://y00913:passwd@boilerplate.hyzzm.mongodb.net/boilerplate?retryWrites=true&w=majority')
+mongoose.connect(db.MongoURI)
 .then(() => console.log('MongoDB Connected...'))
-    .catch(err => console.log(err))
-
+.catch(error => console.log(error))
 
 module.exports = app;

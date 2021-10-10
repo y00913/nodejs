@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>NodeJS_TEST</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>My NodeJS <%= title %></p>
+    <h1>TEST</h1>
+    <p>My NodeJS TEST</p>
     <br>
     <br>
 
-    <form action="/" method="post">
+    <form action="/add" method="post">
       name : <input type="text" name="name"><br>
       phone number : <input type="text" name="pn"><br>
-      <input type="submit">
+      <input type="submit" value="추가">
     </form>
+
+    <br>
+
+    <% for(var i = 0; i < priv.length; i++) { %>
+      <form action="/delete/<%= priv[i]._id %>" method="post">
+        <h2>
+          <%= i+1 %>
+          &nbsp;
+          <%=priv[i].name%>
+          &nbsp;
+          <%=priv[i].phone_number%>
+        </h2>
+        <input type="submit" value="제거">
+      </form>
+      <form action="/update/<%= priv[i]._id %>" method="post">
+        name : <input type="text" name="name"><br>
+        phone number : <input type="text" name="pn"><br>
+        <input type="submit" value="변경">
+      </form>
+    <%}%>
 
   </body>
 </html>

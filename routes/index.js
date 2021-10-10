@@ -4,17 +4,20 @@ const User = require('../Schemas/users')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'TEST' });
+  User.find(function(err, priv){
+    // console.log(priv);
+    res.render('index',{priv: priv});
+  });
+
 });
 
-router.post('/', function(req, res) {
+router.post('/add', function(req, res) {
   console.log('name : ' + req.body.name)
   console.log('phone number : ' + req.body.pn)
 
-  const user = new User({
-    name : req.body.name,
-    phone_number : req.body.phone_number
-  })
+  const user = new User();
+  user.name = req.body.name;
+  user.phone_number = req.body.pn;
 
   user.save()
   .then(() => {
@@ -24,9 +27,35 @@ router.post('/', function(req, res) {
     console.log("Error : " + err);
   });
 
-  res.render('form.ejs', {'name' : req.body.name, 'pn' : req.body.pn})
-})
+  res.redirect('/');
+});
 
-router.use('/users',require('./users'));
+router.post('/delete/:id', function(req, res) {
+  User.findByIdAndDelete(req.params.id, function(err, docs) {
+    if(err) console.log(err);
+    else console.log("Deleted : ", docs);
+  });
+
+  res.redirect('/');
+});
+
+router.post('/update/:id', function(req, res) {
+  User.findById(req.params.id, function(err, user) {
+    if(err) console.log(err);
+    user.name = req.body.name;
+    user.phone_number = req.body.pn;
+
+    user.save()
+  .then(() => {
+    console.log(user);
+  })
+  .catch((err) => {
+    console.log("Error : " + err);
+  });
+
+  });
+
+  setTimeout(() => {res.redirect('/')}, 100);
+});
 
 module.exports = router;
