@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -38,13 +38,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-
-// connect mongodb
-const db = require('./config/keys');
-const mongoose = require('mongoose');
-
-mongoose.connect(db.MongoURI)
+// mongoDB connect
+const mongoose = require('mongoose')
+const db = require('./mongoDB/db')
+mongoose.connect(db.mongoURI)
 .then(() => console.log('MongoDB Connected...'))
-.catch(error => console.log(error))
+.catch(err => console.log(err))
 
 module.exports = app;
