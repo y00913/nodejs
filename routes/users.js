@@ -20,7 +20,7 @@ router.post('/signin', function(req, res) {
           res.render('signInFail');
         }
         else {
-          res.render('waitingRoom', {user: user})
+          res.redirect('/waitingRoom')
         }
       }
     });

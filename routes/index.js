@@ -20,4 +20,10 @@ router.get('/signUp', function(req, res) {
   res.render('signUp');
 });
 
+router.get('/waitingRoom', function(req, res) {
+  console.log('waitingRoom page');
+
+  res.render('waitingRoom');
+})
+
 module.exports = router;

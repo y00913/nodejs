@@ -41,7 +41,7 @@ app.use(function(err, req, res, next) {
 // mongoDB connect
 const mongoose = require('mongoose')
 const db = require('./mongoDB/db')
-mongoose.connect(db.mongoURI)
+mongoose.connect('mongodb+srv://' + db.pw + '@boilerplate.hyzzm.mongodb.net/boilerplate?retryWrites=true&w=majority')
 .then(() => console.log('MongoDB Connected...'))
 .catch(err => console.log(err))
 

@@ -11,10 +11,20 @@
     </button>
     <br>
     <br>
-    Name : <%= user.NAME %>
+    <ul id="messages" type="none">
+      <li id="userCount"></li>
+    </ul>
     <br>
     <br>
 
+    <script>
+      var io = require('socket.io')
+      var socket = io();
+      socket.on('userCount', (count) => {
+        var userCounter = document.getElementById('userCount');
+        userCounter.innerHTML = "유저 수 : " + count;
+      })
+    </script>
 
   </body>
 </html>
