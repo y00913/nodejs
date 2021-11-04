@@ -14,16 +14,38 @@
     <ul id="messages" type="none">
       <li id="userCount"></li>
     </ul>
+
+    <form id="msgForm">
+      <input id="msgInput" autocomplete="off" type="text">
+      <button type="submit">전송</button>
+    </form>
+
     <br>
     <br>
 
+    <script src="/socket.io/socket.io.js"></script>
     <script>
-      var io = require('socket.io')
       var socket = io();
+      var msgform = document.getElementById('msgForm');
       socket.on('userCount', (count) => {
         var userCounter = document.getElementById('userCount');
         userCounter.innerHTML = "유저 수 : " + count;
       })
+      socket.on('message', (msg) => {
+        var messageList = document.getElementById('messages');
+        var messageTag = document.createElement("li");
+        messageTag.innerText = msg;
+        messageList.appendChild(messageTag);
+      });
+
+      msgform.onsubmit = (e) => {
+        e.preventDefault();
+        var msginput = document.getElementById('msgInput');
+
+        socket.emit('message', msginput.value);
+
+        msginput.value = "";
+      };
     </script>
 
   </body>

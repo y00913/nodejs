@@ -4,10 +4,6 @@ const userSchema = mongoose.Schema({
     ID: {
         type: String,
         maxlength: 50
-    },
-    NOTE: {
-        type: String,
-        maslength: 50
     }
 });
 
