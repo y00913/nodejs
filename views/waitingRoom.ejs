@@ -8,13 +8,18 @@
 
 <body>
   <h1> 대기방 </h1>
-  <h2>name : <%= user.NAME %>
+  <h2>이름 : <%= user.NAME %>
   </h2>
   <button type="button" onclick="location.href='/'">
     로그아웃
   </button>
+
   <br>
   <br>
+  <br>
+  <br>
+  <br>
+
   <ul id="messages" type="none">
     <h2>
       <li id="userCount"></li>
@@ -25,9 +30,6 @@
     <input id="msgInput" autocomplete="off" type="text">
     <button type="submit">전송</button>
   </form>
-
-  <br>
-  <br>
 
   <script src="/socket.io/socket.io.js"></script>
   <script>

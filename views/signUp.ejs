@@ -9,10 +9,23 @@
 <body>
   <h1> 회원가입 </h1>
   <form action="/users/signup" method="post">
-    Name : <input type="text" name="name"><br>
-    ID : <input type="text" name="id"><br>
-    PW : <input type="text" name="pw"><br><br>
-    <input type="submit" value="회원가입">
+    <table>
+      <tr>
+        <td>Name : </td>
+        <td><input type="text" name="name"></td>
+      </tr>
+      <tr>
+        <td>ID : </td>
+        <td><input type="text" name="id"></td>
+      </tr>
+      <tr>
+        <td>PW : </td>
+        <td><input type="password" name="pw"></td>
+      </tr>
+      <tr>
+        <td><input type="submit" value="회원가입"></td>
+      </tr>
+    </table>
   </form>
   <button type="button" onclick="location.href='/'">
     메인으로
