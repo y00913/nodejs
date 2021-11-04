@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>회원가입</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1> 회원가입 </h1>
-    <form action="/users/signup" method="post">
-      Name :  <input type="text" name="name"><br>
-      ID :  <input type="text" name="id"><br>
-      PW :  <input type="text" name="pw"><br><br>
-      <input type="submit" value="회원가입">
-    </form>
-    <br>
-    응애
-  </body>
+
+<head>
+  <title>회원가입</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1> 회원가입 </h1>
+  <form action="/users/signup" method="post">
+    Name : <input type="text" name="name"><br>
+    ID : <input type="text" name="id"><br>
+    PW : <input type="text" name="pw"><br><br>
+    <input type="submit" value="회원가입">
+  </form>
+  <button type="button" onclick="location.href='/'">
+    메인으로
+  </button>
+</body>
+
 </html>

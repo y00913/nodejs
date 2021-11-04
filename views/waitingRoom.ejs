@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>대기방</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1> 대기방 </h1>
-    <button type="button" onclick="location.href='/'">
-        로그아웃
-    </button>
-    <br>
-    <br>
-    <ul id="messages" type="none">
+
+<head>
+  <title>대기방</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1> 대기방 </h1>
+  <h2>name : <%= user.NAME %>
+  </h2>
+  <button type="button" onclick="location.href='/'">
+    로그아웃
+  </button>
+  <br>
+  <br>
+  <ul id="messages" type="none">
+    <h2>
       <li id="userCount"></li>
-    </ul>
+    </h2>
+  </ul>
 
-    <form id="msgForm">
-      <input id="msgInput" autocomplete="off" type="text">
-      <button type="submit">전송</button>
-    </form>
+  <form id="msgForm">
+    <input id="msgInput" autocomplete="off" type="text">
+    <button type="submit">전송</button>
+  </form>
 
-    <br>
-    <br>
+  <br>
+  <br>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
-      var msgform = document.getElementById('msgForm');
-      socket.on('userCount', (count) => {
-        var userCounter = document.getElementById('userCount');
-        userCounter.innerHTML = "유저 수 : " + count;
-      })
-      socket.on('message', (msg) => {
-        var messageList = document.getElementById('messages');
-        var messageTag = document.createElement("li");
-        messageTag.innerText = msg;
-        messageList.appendChild(messageTag);
-      });
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+    var msgform = document.getElementById('msgForm');
+    socket.on('userCount', (count) => {
+      var userCounter = document.getElementById('userCount');
+      userCounter.innerHTML = "유저 수 : " + count;
+    })
+    socket.on('message', (msg) => {
+      var messageList = document.getElementById('messages');
+      var messageTag = document.createElement("li");
+      messageTag.innerText = msg;
+      messageList.appendChild(messageTag);
+    });
 
-      msgform.onsubmit = (e) => {
-        e.preventDefault();
-        var msginput = document.getElementById('msgInput');
+    msgform.onsubmit = (e) => {
+      e.preventDefault();
+      var msginput = document.getElementById('msgInput');
 
-        socket.emit('message', msginput.value);
+      socket.emit('message', "<%= user.NAME %> : " + msginput.value);
 
-        msginput.value = "";
-      };
-    </script>
+      msginput.value = "";
+    };
+  </script>
 
-  </body>
+</body>
+
 </html>

@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>메인</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1> 메인 </h1>
-    <br>
-    <br>
-    <button type="button" onclick="location.href='/signIn'">
-      로그인
-    </button>
-    <button type="button" onclick="location.href='/signUp'">
-      회원가입
-    </button>
-  </body>
+
+<head>
+  <title>메인</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1> 메인 </h1>
+  <br>
+  <br>
+  <form action="/users/signin" method="post">
+    ID : <input type="text" name="id"><br>
+    PW : <input type="text" name="pw"><br><br>
+    <input type="submit" value="로그인">
+  </form>
+
+  <button type="button" onclick="location.href='/signUp'">
+    회원가입
+  </button>
+</body>
+
 </html>

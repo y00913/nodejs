@@ -8,12 +8,6 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.get('/signIn', function(req, res) {
-  console.log('signIn page');
-
-  res.render('signIn');
-});
-
 router.get('/signUp', function(req, res) {
   console.log('signUp page');
 
@@ -22,8 +16,9 @@ router.get('/signUp', function(req, res) {
 
 router.get('/waitingRoom', function(req, res) {
   console.log('waitingRoom page');
+  console.log(req.query);
 
-  res.render('waitingRoom');
-})
+  res.render('waitingRoom',{user: req.query});
+});
 
 module.exports = router;
