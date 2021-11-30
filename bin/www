@@ -29,6 +29,11 @@
      console.log('Message received : ' + msg);
      io.emit('message', msg);
    })
+
+   socket.on('addVisitor', (visit) =>{
+     console.log('add visitor ' + visit);
+     io.emit('addVisitor', visit);
+   });
  });
  
  /**

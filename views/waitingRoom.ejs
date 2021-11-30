@@ -20,16 +20,23 @@
   <br>
   <br>
 
+  <form id="msgForm">
+    <input id="msgInput" autocomplete="off" type="text">
+    <button type="submit">전송</button>
+  </form>
+
   <ul id="messages" type="none">
     <h2>
       <li id="userCount"></li>
     </h2>
   </ul>
 
-  <form id="msgForm">
-    <input id="msgInput" autocomplete="off" type="text">
-    <button type="submit">전송</button>
-  </form>
+  <ul id="visitors" type="none">
+    <h1>방문자</h1>
+    <h2>
+      <li id="visitor"></li>
+    </h2>
+  </ul>
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
@@ -45,6 +52,12 @@
       messageTag.innerText = msg;
       messageList.appendChild(messageTag);
     });
+    socket.on('addVisitor', (visit) => {
+      var visitorList = document.getElementById('visitors');
+      var visitorTag = document.createElement("li");
+      visitorTag.innerText = visit;
+      visitorList.appendChild(visitorTag);
+    });
 
     msgform.onsubmit = (e) => {
       e.preventDefault();
@@ -54,6 +67,8 @@
 
       msginput.value = "";
     };
+
+    socket.emit('addVisitor', "<%= user.NAME %> ");
   </script>
 
 </body>
